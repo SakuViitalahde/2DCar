@@ -28,10 +28,18 @@ class Car:
         self.traction_slow = 0.5
 
     def rotate_left(self):
-        self.steering_angle = 30
+        if self.steering_angle < 0:
+             self.steering_angle = 0    
+        if self.steering_angle < 30:
+            self.steering_angle += 3
+        print(self.steering_angle)
 
     def rotate_right(self):
-        self.steering_angle = -30
+        if self.steering_angle > 0:
+             self.steering_angle = 0    
+        if self.steering_angle > -30:
+            self.steering_angle -= 3
+        print(self.steering_angle)
 
     def refresh(self):
         image = pygame.transform.rotate(self.image, 360 - math.degrees(self.angle))
@@ -46,7 +54,7 @@ class Car:
         pygame.draw.circle(self.screen, (255,0,0), self.front_wheel, 3)
 
         pygame.display.flip()
-        self.steering_angle = 0
+        self.steering_angle = self.steering_angle * 0.9
 
     def accelerate(self):
         if self.acceleration_change < 2:
