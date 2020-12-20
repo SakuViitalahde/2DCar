@@ -22,21 +22,18 @@ def main():
                 done = True
 
         keystate = pygame.key.get_pressed()
-        if keystate[273]: ## Up
+        if keystate[105]: ## Up
             car.accelerate()
-            print("acc")
-        if keystate[274]: ## Down
-
-            print("brake")
+        if keystate[107]: ## Down
             car.brake()
-        if keystate[276]: ## Left
+        if keystate[108]: ## Left
             car.rotate_left()
-        if keystate[275]: ## Right
+        if keystate[106]: ## Right
             car.rotate_right()
 
         clock.tick(60)
-        print(car.speed)
-
+        car.refresh()
+        
     pygame.quit()
     sys.exit()
 
