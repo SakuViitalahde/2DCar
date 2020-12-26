@@ -1,6 +1,7 @@
 import sys
 import pygame
 from car import Car
+from track import Track
 
 BLACK = (0, 0, 0)
 
@@ -9,11 +10,13 @@ def main():
     pygame.init()
     size = [1000, 1000]
     screen = pygame.display.set_mode(size)
+    background = pygame.image.load('tausta.png').convert()
 
     clock = pygame.time.Clock()
     done = False
 
     car = Car(screen)
+    track = Track(screen)
     car.refresh()
 
     while not done:
@@ -32,7 +35,12 @@ def main():
             car.rotate_right()
 
         clock.tick(60)
+        screen.fill(BLACK)
+        screen.blit(background, [0, 0])
+        track.draw_track()
         car.refresh()
+        pygame.display.flip()
+        track.check_collision(car.wheel_collision)
         
     pygame.quit()
     sys.exit()
