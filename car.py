@@ -10,7 +10,7 @@ DELTA = 1/60
 class Car:
     def __init__(self,screen):
         self.screen = screen
-        self.image = pygame.image.load('car.png').convert()
+        self.image = pygame.image.load('car.png').convert_alpha()
         self.speed = 0
         self.wheel_base = 30
         self.engine_power = 2700
@@ -91,4 +91,4 @@ class Car:
         #self.back_wheel = back_wheel_no_turn + ((back_wheel_no_turn - self.back_wheel) * traction) 
         
         self.movement_vector = (self.position - ((self.back_wheel + self.front_wheel) / 2))
-        self.position = (self.back_wheel + self.front_wheel) / 2
+        self.position = (self.back_wheel + self.front_wheel) / 2 
